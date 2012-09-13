@@ -1,0 +1,19 @@
+how to review tests
+- name of ADT
+name of its operations
+  types of their arguments
+  types of their results
+how they behave
+
+--------------------
+these words apply to members of java classes:
+static                  and           
+  assosiated with the class
+  static methods
+  static fields(like System.out...)
+  constants  
+
+non-static 
+  associated with instances of the class
+  also referred to as DYNAMIC method 
+  instance variables

@@ -1,0 +1,29 @@
+This refers to: 
+http://www.ccs.neu.edu/course/cs3500wc/assignment1.txt
+
+Static vs. Dynamic Methods
+FSet.emptySet(s)
+	all arguments are named in the paren list.  if the static argument refers to "this", there is an error.  static methods are attached to a class, not to objects.
+s.toString()
+	s is a receiver, which is an implicit argument.  toString() refers to s as 	"this".  
+	
+Question: can you do "s.emptySet()"?
+s.emptySet() ----> deprecated.  do not do this.  You can do it, but it's bad practice.
+-------
+
+basic creators
+	used to create values of the abstract data type.
+	Examples:
+		emptySet
+		adjoin
+		
+derived creator
+	a creator defined in terms of a basic creator.
+	Examples:
+		add
+		without
+		union
+		intersect
+		etc...
+		
+FSet is an example of an immutable abstract data type.

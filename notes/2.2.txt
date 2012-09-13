@@ -1,0 +1,66 @@
+475 million - FDIV loss for intel
+
+big-endian    : 00 01 00 02
+little endian : 02 00 01 00
+
+bob boyer - j. straasdg moore
+
+boyer & j. strother moore theorem prover.  developed into ACL2
+
+purpose of testing is not to prove that the software is correct
+the purpose of testing is to prove that software is incorrect.
+
+testing can prove the existence of a bug.  it cannot prove the
+inexistence of a bug.
+
+assignment 3: writing a test program.
+
+What constitutes a good test?
+need to know about what kinds of bugs are common
+need to know the language
+need to understand a little about the psychology of programming
+when do you have enough tests?
+short answer: never
+long answer: at the very least, a test for each algebraic expression in
+the specification
+MISTAKES WITH EQUALS
+if the input is null, the equals method has to return false
+make sure to test all equals methods in each subclass.  (i.e testing
+empty and adjoin)
+also test it with some random object as well as null
+empty vs non-empty
+non-empty vs empty
+empty vs empty
+non-empty vs non-empty
+cases where the paramaterized types of s1 are different than those of
+s2:
+
+FMap<String, Integer>
+FMap<Double, Integer>
+
+what about subtypes?
+
+FMap<Object, Integer>
+FMap<Double, Integer> - double is a subtype of Object.  This is a
+tricky case.  Try casting whatever key s1 has to the same type as s2's
+key.
+
+specify which conditions make which specifications fail, and test those
+conditions.  that is the minimum requirement.
+
+
+Types have to do with expressions, not with values.  YOu cannot get the
+"type" of an object.  
+
+if f1 and f2 are both EmptyMaps, they will be equal even if the types
+are incompatible.
+
+always test trivial cases.  (like emptyMap)
+
+boundary cases should always be tested.
+
+testing repeating keys/duplicates
+
+order does not matter - test that.
+
+

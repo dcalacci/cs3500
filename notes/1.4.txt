@@ -1,0 +1,40 @@
+to do assigment 2:
+
+remove all static methods (except emptySet())
+rename your abstract methods
+make those abstract methods public
+change any calls to static methods (except emptySet()) to call the
+dynamic methods
+
+specification of hash code has changed - now, two unequal objects have
+to be unlikely to have equal hashcodes. 
+
+THE NEW RULE
+  The new operator should be used only to create instances of a class
+you are implementing.
+
+
+NESTED STATIC CLASSES
+
+access modifiers
+-private- -protected- -public-
+
+      private/public
+  if you declare a member to be private, only code within that class
+may access it.
+  if you declare a member to be public, anything can access it,
+including the client.
+
+also default access - something should not be used by a client, but
+you're not sure if it should be public or private
+
+
+if you declare a member to be protected, you're actually making it
+LESS protected than the default modifier.
+
+Factory Method Pattern / breaking of the new rule
+
+information hiding - sometimes you can be a more effective programmer
+if you dont have to think about all the details.  the factory method
+pattern tends to isolate clients from representations.  its a way to
+allow clients to be representation-independent

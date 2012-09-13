@@ -1,0 +1,8 @@
+equals method in fmap
+
+get(x) from set 1 should return the same thing as get(x) from set 2
+and vice versa - get(x) from set 2 should return the same thing as
+get(x) from set 1
+
+and contains(x) in set 1 should return the same thing as contains(x) in
+set 2

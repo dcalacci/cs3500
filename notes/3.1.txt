@@ -1,0 +1,75 @@
+empty set         = {}
+singleton sets    = {x} (for any object x)
+A x B             = Cartesian product
+A u B             = Union of two sets
+
+
+these sets typically operate using recursive definitions
+(also defined as inductive definitions)
+
+
+
+Cartesian product:
+AxB = { <x, y> | x E A  &  y E B }
+auB = { x | x E A  OR  x E B }
+
+Russell's paradox - not every use of this notation actually defines a
+set. There's a group of SET COMPREHENSION AXIOMS that actually show how
+you can REALLY define a set.
+
+P=NP
+
+P is the set of general problems that can be solved in polynomial time
+on a standard, deterministic machine with infinite RAM
+
+NP is the set of problems for which any proposed solution can be
+verified in polynomial time on the same type of machine.  
+
+XxO = O , where O is the empty set.
+
+X+(y+z) = (X+y)+z
+Xx(y+z) = (Xxy)+(Xxz)
+
++ means unions.
+
+union of types A, B, C, D in java
+
+
+   A+B+C+D
+______|_______     
+|   |   |   | 
+A   B   C   D
+
+A+B+C+D becomes it's own type and A, B, C, and D are all subtypes of
+A+B+C+D
+
+Product type AxBxC
+__________
+|  AxBxC |
+----------
+|  a: A  |
+|  b: B  |
+|  c: C  |
+----------
+
+represented by a concrete class whose instance variables are of those
+types, one instance variable for each type.
+
+FMap<K, V> = AssociationList<K, V> + RedBlack<K, V>
+
+Red-Black Tree
+
+RedBlack<K, V> is one of:
+  EmptyTree<K, V>
+  Node<K, V>
+
+    EmptyTree<K, V> = ()
+    Node<K, V> = (K x V x RedBlack<K, V> x RedBlack<K, V>)
+
+
+Java's dynamic method dispatch is an extremely convenient and efficient
+way to implement sums of products.
+
+
+    
+  

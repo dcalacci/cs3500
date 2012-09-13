@@ -1,0 +1,157 @@
+CS 3500 Assignment #8
+Assigned:  Monday, 11 June 2012
+Due:  Thursday, 14 June 2012
+
+The purposes of this assignment are:
+
+ * To implement the Visitor pattern.
+ * To illustrate function objects.
+ * To implement better hashCode() methods.
+
+You will extend the implementation in Java of the FMap<K,V>
+ADT that was specified in assignment 7 by adding the public
+dynamic method specified below, and by improving the hashCode()
+method so it satisfies the probabilistic specification given
+below.
+
+Collaboration between students is forbidden on this assignment.
+You are responsible for keeping your code hidden from all other
+students.  Turn in your work on this assignment before 10 pm on
+the due date by using the submit script as documented on the
+course's main assignments web page,
+http://www.ccs.neu.edu/course/cs3500wc/assignments.html
+
+Your file of Java code should begin with a block comment that lists
+    1.  Your name, as you want the instructor to write it.
+    2.  Your email address.
+    3.  Any remarks that you wish to make to the instructor.
+
+Part of your grade will depend on the quality, correctness, and
+efficiency of your code, part will depend on your adherence to
+object-oriented programming style and idioms as taught in this
+course, part will depend on the readability of your code (comments
+and indentation), and part will depend on how well you follow the
+procedure above for submitting your work.  Late assignments may
+be discounted, and very late assignments may be discarded.
+
+--------------------------------------------------
+
+Your assignment is to write the code for a single file,
+FMap.java, that implements the specification below
+as well as the specification of assignment 7.
+
+You will be given two files in /course/cs3500wc/Assignments/A8:
+
+    Visitor.java
+    TestVisitor.java
+
+The Visitor.java file defines the Visitor<K,V> interface,
+so that file is essential for this assignment.  The
+TestVisitor.java file contains a simple test program;
+you will need to supplement that test program with further
+tests, including tests for the methods specified by
+assignment 7.
+
+--------------------------------------------------
+
+Specification of the FMap<K,V> ADT.
+
+The FMap<K,V> ADT remains as specified in assignment 7, except
+that it must now provide the client-visible accept(Visitor<K,V>)
+operation specified below.
+
+The FMap<K,V> ADT remains immutable.
+
+The efficiency requirements specified in assignment 7 remain in
+effect.
+
+If m is an FMap<K,V> created using the 1-argument version of
+FMap.emptyMap, and
+
+    n is m.size()
+    v is a Visitor<K,V>
+    v.visit(K,V) runs in constant time
+
+then m.accept(v) should run in O(n) time.
+
+The FMap<K,V> class shall provide all of the methods specified
+in assignment 7.  In addition, that class shall provide the
+following public dynamic method:
+
+Signature:
+
+    accept:  Visitor<K,V>  ->  FMap<K,V>
+
+Specification:
+
+    If m is an FMap<K,V> and visitor is a Visitor<K,V>, then
+    m.accept(visitor).equals(m2) where m2 is the FMap<K,V>
+    computed by
+
+        FMap<K,V> m2 = FMap.emptyMap();
+        for (K k : m) {
+            V v = visitor.visit (k, m.get (k));
+            m2 = m2.add (k, v);
+        }
+
+    If m is an FMap<K,V> created using the 1-argument version
+    of FMap.emptyMap, then m2 must satisfy the average-case
+    efficiency requirements as stated in assignment 7.
+
+Note:
+
+    If m.containsKey(k), then there shall exist exactly one v
+    such that m.accept(visitor) results in a call to
+    visitor.visit(k,v).  That v shall be m.get(k).
+
+    If m.containsKey(k) and m.get(k) is v, then m.accept(visitor)
+    shall result in exactly one call to visitor.visit(k,v).
+
+    If a comparator was provided for the empty FMap from which
+    an FMap m was built up, then the visitor shall visit keys
+    in the order specified by the comparator (with lesser keys
+    being visited before greater keys).
+
+    If no comparator was provided, then the ordering of the calls
+    to visitor.visit(k,v) is unspecified.  In particular, some of
+    those calls to visitor.visit(k,v) may be concurrent.  Clients
+    who use the accept(Visitor<K,V>) method are responsible for
+    any synchronization that may be necessary.
+
+--------------------------------------------------
+
+The specification of hashCode() from assignment 3 is strengthened
+as follows.
+
+    If m1 and m2 are values of the FMap ADT, and
+
+        m1.equals(m2)
+
+    then m1.hashCode() == m2.hashCode().
+
+    If f1 and f2 are values of the FMap<K,V> ADT, and
+
+        !(f1.equals(f2))
+
+    then f1.hashCode() is unlikely to be equal to f2.hashCode().
+
+Note:  The word "unlikely" will be interpreted as follows.
+For every type K and V, if both f1 and f2 are selected at
+random from a set of FMap<K,V> values such that for every
+non-negative integer n and int value h the probability
+of a randomly selected f having n == f.size() is
+
+    P(n) = 1/(2^(n+1))
+
+and for each key k such that f.containsKey(k) the
+probability that h == k.hashCode() is at most 1/4
+
+and for each value v such that v.equals(f.get(k)) the
+probability that h == v.hashCode() is at most 1/4
+
+and the three probabilities above are independent
+
+then the probability of f1.hashCode() == f2.hashCode() when
+f1 and f2 are not equal is less than 6%.
+
+--------------------------------------------------
